@@ -28,6 +28,9 @@ const AppContext = (props) => {
       try {
         const res = await (await fetch(wordBank)).text()
         const wordarray = res.split('\r\n')
+        setCorrectWord(
+          wordarray[Math.floor(Math.random() * wordarray.length)].toUpperCase()
+        )
         setWordSet(new Set(wordarray))
       } catch (err) {
         console.log(err)
@@ -35,7 +38,7 @@ const AppContext = (props) => {
     }
     generateSet()
   }, [])
-
+  console.log(correctWord)
   const restartGame = () => {
     setBoard(defaultBoard)
     setCurrAttempt({ col: 0, row: 0 })
