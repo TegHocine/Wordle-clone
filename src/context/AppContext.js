@@ -38,13 +38,8 @@ const AppContext = (props) => {
     }
     generateSet()
   }, [])
-  console.log(correctWord, gameOver)
-
+  console.log(correctWord)
   const restartGame = () => {
-    const wordarray = Array.from(wordSet)
-    setCorrectWord(
-      wordarray[Math.floor(Math.random() * wordarray.length)].toUpperCase()
-    )
     setBoard([
       ['', '', '', '', ''],
       ['', '', '', '', ''],
@@ -57,6 +52,11 @@ const AppContext = (props) => {
     setDisabledLetter([])
     setGameOver(false)
     setGameWon(false)
+
+    const wordarray = Array.from(wordSet)
+    setCorrectWord(
+      wordarray[Math.floor(Math.random() * wordarray.length)].toUpperCase()
+    )
   }
 
   const typeLetter = (keyVal) => {
