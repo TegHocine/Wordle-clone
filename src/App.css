@@ -132,3 +132,26 @@ button {
   letter-spacing: 1px;
   font-size: 1.1rem;
 }
+
+@media (max-width: 640px) {
+  .keyboard {
+    gap: 0.2rem;
+  }
+
+  .lines {
+    gap: 0.2rem;
+  }
+
+  .key {
+    width: 30px;
+    height: 30px;
+  }
+
+  .key:hover {
+    background-color: rgba(94, 94, 94, 0.986);
+  }
+
+  .big {
+    width: 60px;
+  }
+}
