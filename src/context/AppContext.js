@@ -1,4 +1,6 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
+
+import wordBank from '../wordle-bank.txt'
 
 export const Context = createContext()
 
@@ -16,8 +18,31 @@ const AppContext = (props) => {
   const [currAttempt, setCurrAttempt] = useState({ col: 0, row: 0 })
   const [disabledLetter, setDisabledLetter] = useState([])
   const [correctWord, setCorrectWord] = useState('REACT')
+  const [wordSet, setWordSet] = useState(null)
   const [gameOver, setGameOver] = useState(false)
   const [gameWon, setGameWon] = useState(false)
+  const [alert, setAlert] = useState(false)
+
+  useEffect(() => {
+    const generateSet = async () => {
+      try {
+        const res = await (await fetch(wordBank)).text()
+        const wordarray = res.split('\r\n')
+        setWordSet(new Set(wordarray))
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    generateSet()
+  }, [])
+
+  const restartGame = () => {
+    setBoard(defaultBoard)
+    setCurrAttempt({ col: 0, row: 0 })
+    setDisabledLetter([])
+    setGameOver(false)
+    setGameWon(false)
+  }
 
   const typeLetter = (keyVal) => {
     if (currAttempt.row > 4) return
@@ -42,18 +67,22 @@ const AppContext = (props) => {
 
     if (currAttempt.row !== 5) return
 
-    toDisable = submitedAttempt.map((letter, i) =>
-      letter !== correctWord[i] ? letter : ''
-    )
+    if (wordSet.has(submitedWord.toLowerCase())) {
+      toDisable = submitedAttempt.map((letter, i) =>
+        letter !== correctWord[i] ? letter : ''
+      )
 
-    const isCorrect = submitedWord === correctWord
-    currAttempt.col >= 5 && !isCorrect && setGameOver(true)
-    isCorrect && setGameWon(true)
+      const isCorrect = submitedWord === correctWord
+      currAttempt.col >= 5 && !isCorrect && setGameOver(true)
+      isCorrect && setGameWon(true)
 
-    setCurrAttempt({ ...currAttempt, col: currAttempt.col + 1, row: 0 })
-    setDisabledLetter([...disabledLetter, ...toDisable])
+      setCurrAttempt({ ...currAttempt, col: currAttempt.col + 1, row: 0 })
+      setDisabledLetter([...disabledLetter, ...toDisable])
+    } else {
+      setAlert(true)
+    }
   }
-  console.log(currAttempt)
+
   return (
     <Context.Provider
       value={{
@@ -67,7 +96,10 @@ const AppContext = (props) => {
         disabledLetter,
         correctWord,
         gameOver,
-        gameWon
+        gameWon,
+        restartGame,
+        alert,
+        setAlert
       }}>
       {props.children}
     </Context.Provider>

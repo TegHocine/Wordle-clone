@@ -1,5 +1,6 @@
 import Board from './components/Board'
 import KeyBoard from './components/KeyBoard'
+import Notify from './components/Notify'
 
 import AppContext from './context/AppContext'
 
@@ -12,6 +13,7 @@ function App() {
       <AppContext>
         <Board />
         <KeyBoard />
+        <Notify />
       </AppContext>
     </div>
   )

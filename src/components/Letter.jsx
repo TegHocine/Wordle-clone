@@ -12,6 +12,7 @@ export default function Letter({
   const letterState =
     currAttempt.col > currCol &&
     (correct ? 'correct' : almost ? 'almost' : 'notin')
+
   return (
     <div className='rows' id={letterState ? letterState : ''}>
       {letter}

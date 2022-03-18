@@ -11,6 +11,7 @@ body {
 }
 
 .App {
+  position: relative;
   display: grid;
   place-content: center;
 }
@@ -99,4 +100,35 @@ body {
 #notin {
   border: 3px solid transparent;
   background-color: #464646;
+}
+
+.spacing {
+  letter-spacing: 2px;
+}
+
+button {
+  border: none;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  background: #3b5e38;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.notify-wrap {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: 4.5rem;
+}
+
+.notify {
+  padding: 0.5rem;
+  background-color: white;
+  color: #282c34;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
 }

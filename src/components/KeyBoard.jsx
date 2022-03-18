@@ -15,7 +15,9 @@ export default function KeyBoard() {
     currAttempt,
     disabledLetter,
     gameOver,
-    gameWon
+    gameWon,
+    correctWord,
+    restartGame
   } = appContext
 
   const handleKeyBoard = useCallback(
@@ -51,11 +53,22 @@ export default function KeyBoard() {
     }
   }, [handleKeyBoard, gameOver, gameWon])
   return (
-    <>
+    <div className='keyboard' onKeyDown={handleKeyBoard}>
       {gameOver ? (
-        <h1>Game Over</h1>
+        <>
+          <h2>Game Over</h2>
+          <p>
+            Word: <span className='spacing'>{correctWord.toLowerCase()}</span>
+          </p>
+          <button onClick={(e) => restartGame()}> Try again </button>
+        </>
+      ) : gameWon ? (
+        <>
+          <h2>U Guessed It</h2>
+          <button onClick={(e) => restartGame()}> Play again </button>
+        </>
       ) : (
-        <div className='keyboard' onKeyDown={handleKeyBoard}>
+        <>
           <div className='lines'>
             {keysLine1.map((key, i) => (
               <Key
@@ -85,8 +98,8 @@ export default function KeyBoard() {
             ))}
             <Key keyVal={'Delete'} special />
           </div>
-        </div>
+        </>
       )}
-    </>
+    </div>
   )
 }
