@@ -144,7 +144,19 @@ button {
     width: 35px;
     height: 35px;
   }
+
+  .special {
+    position: relative;
+  }
   .big {
-    width: 70px;
+    width: 80px;
+    position: absolute;
+    bottom: -2.5rem;
+  }
+  .delete {
+    right: 0;
+  }
+  .enter {
+    left: 0;
   }
 }

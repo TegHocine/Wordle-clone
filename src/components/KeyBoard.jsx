@@ -87,7 +87,7 @@ export default function KeyBoard() {
               />
             ))}
           </div>
-          <div className='lines'>
+          <div className='lines special'>
             <Key keyVal={'Enter'} special />
             {keysLine3.map((key, i) => (
               <Key

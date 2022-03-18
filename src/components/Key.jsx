@@ -16,9 +16,13 @@ export default function Key({ keyVal, special, disabled }) {
     }
   }
 
+  const specialKey =
+    keyVal === 'Enter' ? 'enter' : keyVal === 'Delete' ? 'delete' : ''
   return (
     <div
-      className={`key ${special && 'big'} ${disabled && 'disabled'}`}
+      className={`key ${special && 'big'} ${
+        disabled && 'disabled'
+      } ${specialKey}`}
       onClick={onClickLetter}>
       {keyVal}
     </div>
