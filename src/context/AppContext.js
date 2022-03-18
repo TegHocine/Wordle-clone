@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react'
 
-import wordBank from '../wordle-bank.txt'
+import wordBank from '../wordle-bank'
 
 export const Context = createContext()
 
@@ -25,20 +25,17 @@ const AppContext = (props) => {
 
   useEffect(() => {
     const generateSet = async () => {
-      try {
-        const res = await (await fetch(wordBank)).text()
-        const wordarray = res.split('\r\n')
-        setCorrectWord(
-          wordarray[Math.floor(Math.random() * wordarray.length)].toUpperCase()
-        )
-        setWordSet(new Set(wordarray))
-      } catch (err) {
-        console.log(err)
-      }
+      const wordarray = wordBank
+      setCorrectWord(
+        wordarray[Math.floor(Math.random() * wordarray.length)].toUpperCase()
+      )
+      setWordSet(new Set(wordarray))
     }
     generateSet()
   }, [])
+
   console.log(correctWord)
+
   const restartGame = () => {
     setBoard([
       ['', '', '', '', ''],
