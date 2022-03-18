@@ -1,38 +1,102 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  color: white;
+  font-size: 1rem;
+  padding-top: 1rem;
+}
+
+.App {
+  display: grid;
+  place-content: center;
+}
+
+/* board */
+.board {
+  margin-top: 1rem;
+  background-color: #282c34;
+  padding: 0.5rem;
+  display: grid;
+  place-content: center;
+  gap: 0.3rem;
+}
+
+.cols {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  gap: 0.3rem;
+  width: max-content;
+}
+
+.rows {
+  border: 3px solid rgba(128, 128, 128, 0.274);
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-content: center;
+  font-size: 2rem;
+  border-radius: 5px;
+}
+
+/* keyboard */
+
+.keyboard {
+  margin-top: 1rem;
+  background-color: #282c34;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.lines {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  gap: 0.5rem;
+  width: max-content;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.key {
+  background-color: rgb(110, 110, 110);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.key:hover {
+  background-color: rgba(94, 94, 94, 0.986);
+}
+
+.big {
+  width: 80px;
+}
+
+.disabled {
+  background-color: #464646;
+  pointer-events: none;
+}
+
+#correct {
+  border: 3px solid transparent;
+  background-color: #6aaa64;
+}
+
+#almost {
+  border: 3px solid transparent;
+  background-color: #b59f3b;
+}
+
+#notin {
+  border: 3px solid transparent;
+  background-color: #464646;
 }

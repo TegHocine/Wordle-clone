@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Board from './components/Board'
+import KeyBoard from './components/KeyBoard'
+
+import AppContext from './context/AppContext'
+
+import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>Wordle Clone</h1>
+      <AppContext>
+        <Board />
+        <KeyBoard />
+      </AppContext>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
