@@ -33,9 +33,9 @@ const AppContext = (props) => {
     }
     generateSet()
   }, [])
-
-  console.log(correctWord)
-
+  setTimeout(() => {
+    console.log(correctWord)
+  }, 3000)
   const restartGame = () => {
     setBoard([
       ['', '', '', '', ''],
@@ -80,10 +80,9 @@ const AppContext = (props) => {
     if (currAttempt.row !== 5) return
 
     if (wordSet.has(submitedWord.toLowerCase())) {
-      toDisable = submitedAttempt.map((letter, i) =>
-        letter !== correctWord[i] ? letter : ''
+      toDisable = submitedAttempt.filter(
+        (letter) => !correctWord.includes(letter)
       )
-
       const isCorrect = submitedWord === correctWord
       currAttempt.col >= 5 && !isCorrect && setGameOver(true)
       isCorrect && setGameWon(true)
