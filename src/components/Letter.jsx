@@ -14,8 +14,16 @@ export default function Letter({
     (correct ? 'correct' : almost ? 'almost' : 'notin')
 
   return (
-    <div className='rows' id={letterState ? letterState : ''}>
-      {letter}
+    <div className={` ${letter && 'ping'} `}>
+      <div
+        className={`rows`}
+        id={letterState ? letterState : ''}
+        style={{
+          transitionDelay: `${letterPos * 300}ms`,
+          animationDelay: `${letterPos * 200}ms`
+        }}>
+        {letter}
+      </div>
     </div>
   )
 }

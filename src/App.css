@@ -34,6 +34,16 @@ body {
   width: max-content;
 }
 
+.ping {
+  animation: ping 0.1s cubic-bezier(0.4, 0, 0.6, 1) 1;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(1.1);
+  }
+}
 .rows {
   border: 3px solid rgba(128, 128, 128, 0.274);
   width: 45px;
@@ -42,6 +52,43 @@ body {
   place-content: center;
   font-size: 2rem;
   border-radius: 5px;
+}
+
+#correct {
+  border: 3px solid transparent;
+  background-color: #6aaa64;
+  animation: flip 0.6s cubic-bezier(0.4, 0, 0.6, 1) 1;
+}
+
+#almost {
+  border: 3px solid transparent;
+  background-color: #b59f3b;
+  animation: flip 0.6s cubic-bezier(0.4, 0, 0.6, 1) 1;
+}
+
+#notin {
+  border: 3px solid transparent;
+  background-color: #464646;
+  animation: flip 0.6s cubic-bezier(0.4, 0, 0.6, 1) 1;
+}
+
+@keyframes flip {
+  0%,
+  25% {
+    transform: rotateX(-45deg);
+  }
+  25%,
+  50% {
+    transform: rotateX(-90deg);
+  }
+  50%,
+  75% {
+    transform: rotateX(-45deg);
+  }
+  75%,
+  100% {
+    transform: rotateX(0deg);
+  }
 }
 
 /* keyboard */
@@ -85,21 +132,6 @@ body {
 .disabled {
   background-color: #464646;
   pointer-events: none;
-}
-
-#correct {
-  border: 3px solid transparent;
-  background-color: #6aaa64;
-}
-
-#almost {
-  border: 3px solid transparent;
-  background-color: #b59f3b;
-}
-
-#notin {
-  border: 3px solid transparent;
-  background-color: #464646;
 }
 
 .spacing {
