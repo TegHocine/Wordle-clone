@@ -191,7 +191,7 @@ button {
   .big {
     width: 80px;
     position: absolute;
-    bottom: -2rem;
+    bottom: -2.5rem;
   }
   .delete {
     right: 0;
