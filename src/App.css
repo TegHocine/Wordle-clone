@@ -166,15 +166,23 @@ button {
 }
 
 @media (max-width: 640px) {
+  .rows {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
   .keyboard {
     gap: 0.25rem;
   }
+
   .lines {
     gap: 0.25rem;
   }
+
   .key {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 
   .special {
@@ -183,7 +191,7 @@ button {
   .big {
     width: 75px;
     position: absolute;
-    bottom: -2.5rem;
+    bottom: -2rem;
   }
   .delete {
     right: 0;
